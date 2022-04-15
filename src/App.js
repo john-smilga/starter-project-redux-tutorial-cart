@@ -10,8 +10,8 @@ import { Provider } from "react-redux";
 import reducer from "./reducer";
 const initialStore = {
   cart: cartItems,
-  total: 105,
-  amount: 3,
+  total: 0,
+  amount: 0,
 };
 
 const store = createStore(reducer, initialStore);

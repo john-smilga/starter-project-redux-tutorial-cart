@@ -1,8 +1,27 @@
-import { CLEAR_CART, INCREASE, DECREASE, REMOVE } from "./action";
+import { GET_TOTALS, CLEAR_CART, INCREASE, DECREASE, REMOVE } from "./action";
 
 const reducer = (state, action) => {
   const { type, payload } = action;
-  if (action.type === CLEAR_CART) {
+  if (type === GET_TOTALS) {
+    console.log(state);
+    let { total, amount } = state.cart.reduce(
+      (acc, item) => {
+        const { price, amount } = item;
+        const itemTotal = price * amount;
+        acc.total += itemTotal;
+        acc.amount += amount;
+        return acc;
+      },
+      { total: 0, amount: 0 }
+    );
+    total = parseFloat(total.toFixed(2));
+    return {
+      ...state,
+      total,
+      amount,
+    };
+  }
+  if (type === CLEAR_CART) {
     return {
       ...state,
       cart: [],
