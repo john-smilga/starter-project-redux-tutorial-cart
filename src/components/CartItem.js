@@ -47,7 +47,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     remove: () => dispatch({ type: REMOVE, payload: { id } }),
     increase: () => dispatch({ type: INCREASE, payload: { id } }),
-    decrease: () => dispatch({ type: DECREASE, payload: { id } }),
+    decrease: () => dispatch({ type: DECREASE, payload: { id, amount } }),
   };
 };
 export default connect(null, mapDispatchToProps)(CartItem);
