@@ -7,6 +7,18 @@ const reducer = (state, action) => {
       cart: [],
     };
   }
+  if (type === INCREASE) {
+    const newCart = state.cart.map((item) => {
+      if (item.id === payload.id) {
+        item = { ...item, amount: item.amount + 1 };
+      }
+      return item;
+    });
+    return {
+      ...state,
+      cart: newCart,
+    };
+  }
   if (type === REMOVE) {
     return {
       ...state,
