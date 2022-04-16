@@ -1,6 +1,13 @@
 import { GET_TOTALS, CLEAR_CART, INCREASE, DECREASE, REMOVE } from "./actions";
+// items
+import cartItems from "./cart-items";
+const initialStore = {
+  cart: cartItems,
+  total: 0,
+  amount: 0,
+};
 
-const reducer = (state, action) => {
+const reducer = (state = initialStore, action) => {
   const { type, payload } = action;
   if (type === GET_TOTALS) {
     let { total, amount } = state.cart.reduce(
